@@ -1,6 +1,10 @@
 {
   "short_name": "Remember",
-  "name": "The simple todo list",
+  "name": "The simple Todo app",
+  "description": "A Todo app using progressive technologies",
+  "theme_color": "#009688",
+  "lang": "en-US",
+  "dir": "ltr",
   "icons": [
     {
       "src": "favicon.png",
