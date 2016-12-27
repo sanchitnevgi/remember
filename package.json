@@ -1,0 +1,27 @@
+{
+  "name": "remember",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "0.8.4",
+    "sw-precache": "^4.2.3"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "localforage": "^1.4.3",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-hammerjs": "^0.5.0",
+    "react-redux": "^5.0.1",
+    "redux": "^3.6.0",
+    "redux-saga": "^0.14.0",
+    "shortid": "^2.2.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "build-offline": "react-scripts build && sw-precache --root='build/' --static-file-globs='build/**/!(*map*)'"
+  }
+}

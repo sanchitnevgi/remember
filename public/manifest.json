@@ -1,0 +1,14 @@
+{
+  "short_name": "Remember",
+  "name": "The simple todo list",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "index.html?launcher=true",
+  "display": "standalone",
+  "orientation": "portrait"
+}

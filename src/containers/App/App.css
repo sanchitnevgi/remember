@@ -1,0 +1,76 @@
+body {
+  background: rgb(235, 235, 235);
+  height: 100vh;
+}
+
+p, label, h1, h2, h3, h4, h5, h6, span, a {
+  font-family: sans-serif;
+}
+
+#app {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#todo-header {
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  padding: 32px 0px;
+  background-color: #009688;
+  justify-content: center;
+}
+
+#todo-header > input {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 20px;
+  margin: 0px 8px;
+  padding: 8px 12px;
+  outline: none;
+  border: none;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.75);
+  max-width: 480px;
+  height: 48px;
+}
+
+.todo-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+#clear-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#clear-todos {
+  background: none;
+  border: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: rgb(100, 100, 100);
+  padding: 8px;
+  outline: none;
+}
+
+.todo-item {
+  padding: 8px 16px;
+  font-size: 20px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  background: #FFF;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.todo-list {
+  width: 100%;
+  max-width: 560px;
+}
+
+.todo-item.completed {
+  color: rgb(180, 180, 180)
+}
