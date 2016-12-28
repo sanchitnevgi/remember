@@ -9,6 +9,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "color-string": "^1.4.0",
+    "firebase": "^3.6.4",
     "localforage": "^1.4.3",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",

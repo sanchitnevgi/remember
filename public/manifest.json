@@ -2,7 +2,7 @@
   "short_name": "Remember",
   "name": "The simple Todo app",
   "description": "A Todo app using progressive technologies",
-  "theme_color": "#009688",
+  "theme_color": "#1B5E20",
   "lang": "en-US",
   "dir": "ltr",
   "icons": [
