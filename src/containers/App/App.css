@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 body {
   background: rgb(235, 235, 235);
   height: 100vh;
 }
 
 p, label, h1, h2, h3, h4, h5, h6, span, a {
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 #app {
@@ -17,7 +19,7 @@ p, label, h1, h2, h3, h4, h5, h6, span, a {
   display: flex;
   box-sizing: border-box;
   padding: 32px 0px;
-  background-color: #009688;
+  background-color: #1B5E20;
   justify-content: center;
 }
 
@@ -56,13 +58,17 @@ p, label, h1, h2, h3, h4, h5, h6, span, a {
   outline: none;
 }
 
+.todo-item-container {
+  position: relative;
+}
+
 .todo-item {
   padding: 8px 16px;
   font-size: 20px;
   height: 48px;
   display: flex;
   align-items: center;
-  background: #FFF;
+  color: #FFF;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -73,4 +79,35 @@ p, label, h1, h2, h3, h4, h5, h6, span, a {
 
 .todo-item.completed {
   color: rgb(180, 180, 180)
+}
+
+.todo-edit-container {
+  position: absolute;
+  top: 0;
+  height: 64px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  display: none;
+}
+
+.todo-edit-container input {
+  border: 1px solid rgb(102, 102, 102);
+  font-size: 20px;
+  margin: 0px 8px;
+  padding: 8px;
+  background: none;
+  color: #FFF;
+  outline: none;
+  width: 100%;
+  font-family: 'Lato';
+}
+
+.todo-item-container.editing .todo-item {
+  visibility: hidden;
+}
+
+.todo-item-container.editing .todo-edit-container {
+  display: flex;
 }

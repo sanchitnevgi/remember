@@ -1,20 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { toggleTodo } from '../../actions'
+import { markTodo, editTodo } from '../../actions'
 import TodoInput from '../../components/TodoInput'
 import TodoList from '../../components/TodoList'
 import TodoItem from '../../components/TodoItem'
+import getColor from '../../util/colorUtil'
 
 class TodoContainer extends Component {
   render() {
-    const { todos, toggleTodo } = this.props
+    const { todos, markTodo, editTodo } = this.props
+    const colors = getColor()
     return (
       <div className='todo-container'>
         <TodoInput />
         <TodoList>
           {
             todos.map(todo =>
-              <TodoItem key={todo.id} {...todo} toggleTodo={toggleTodo} />
+              <TodoItem key={todo.id} {...todo} markTodo={markTodo} bgColor={colors.next().value} onEdit={editTodo}/>
             )
           }
         </TodoList>
@@ -25,4 +27,4 @@ class TodoContainer extends Component {
 
 const mapStateToProps = ({ todos }) => ({ todos })
 
-export default connect(mapStateToProps, { toggleTodo })(TodoContainer)
+export default connect(mapStateToProps, { markTodo, editTodo })(TodoContainer)

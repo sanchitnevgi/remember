@@ -1,11 +1,13 @@
-export const NEW_TODO = 'NEW_TODO'
 export const ADD_TODO = 'ADD_TODO'
-export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const CLEAR_TODOS = 'CLEAR_TODOS'
-export const FETCH_TODOS = 'FETCH_TODOS'
+export const FETCH_CACHED_TODOS = 'FETCH_CACHED_TODOS'
+export const RECEIVE_CACHED_TODOS = 'RECEIVE_CACHED_TODOS'
+export const MARK_TODO = 'MARK_TODO'
+export const EDIT_TODO = 'EDIT_TODO'
 
-export const newTodo = text => ({type: NEW_TODO, text})
-export const addTodo = todo => ({type: ADD_TODO, todo})
-export const toggleTodo = id => ({type: TOGGLE_TODO, id})
-export const fetchTodos = () => ({type: FETCH_TODOS})
+export const addTodo = text => ({type: ADD_TODO, text})
+export const fetchCachedTodos = () => ({type: FETCH_CACHED_TODOS})
 export const clearTodos = () => ({type: CLEAR_TODOS})
+export const markTodo = (id, completed) => ({type: MARK_TODO, id, completed})
+export const editTodo = (id, text) => ({type: EDIT_TODO, id, text})
+export const receiveCachedTodos = todos => ({type: RECEIVE_CACHED_TODOS, todos})

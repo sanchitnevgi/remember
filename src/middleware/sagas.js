@@ -1,32 +1,30 @@
-import { call, put, takeEvery } from 'redux-saga/effects'
-import { saveTodo, toggleTodo, clearTodos } from '../util/storageUtil'
-import { makeTodo } from '../util/todoUtil'
-import { ADD_TODO, NEW_TODO, TOGGLE_TODO, CLEAR_TODOS } from '../actions'
+import { takeEvery, select, put } from 'redux-saga/effects'
+import { saveTodos, getTodos } from '../util/storageUtil'
+import { ADD_TODO, EDIT_TODO, CLEAR_TODOS, MARK_TODO, FETCH_CACHED_TODOS, receiveCachedTodos } from '../actions'
 
-function* cacheTodo(action) {
+function* cacheTodos() {
   try {
-    switch (action.type) {
-      case NEW_TODO:
-        const todo = makeTodo(action.text)
-        yield call(saveTodo, todo)
-        yield put({type: ADD_TODO, todo})
-        break
-      case TOGGLE_TODO:
-        yield call(toggleTodo, action.id)
-        break
-      case CLEAR_TODOS:
-        yield call(clearTodos)
-        break
-      default:
-        break
-    }
+    const todos = yield select(state => state.todos)
+    saveTodos(todos)
+  } catch(e) {
+    yield e
+  }
+}
+
+function* getCachedTodos() {
+  try {
+    const todos = yield getTodos()
+    yield put(receiveCachedTodos(todos))
   } catch(e) {
     yield e
   }
 }
 
 function* todoStorageSaga() {
-  yield takeEvery([NEW_TODO, TOGGLE_TODO, CLEAR_TODOS], cacheTodo)
+  yield [
+    takeEvery(FETCH_CACHED_TODOS, getCachedTodos),
+    takeEvery([ADD_TODO, EDIT_TODO, CLEAR_TODOS, MARK_TODO], cacheTodos)
+  ]
 }
 
 export default todoStorageSaga

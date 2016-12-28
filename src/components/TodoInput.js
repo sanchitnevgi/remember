@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { newTodo } from '../actions'
+import { addTodo } from '../actions'
 
 class TodoInput extends Component {
   state = {
@@ -9,7 +9,7 @@ class TodoInput extends Component {
   handleSubmit = e => {
     const text = e.target.value.trim()
     if (e.which === 13) {
-      this.props.newTodo(text)
+      this.props.addTodo(text)
       this.setState({ text: '' })
     }
   }
@@ -31,4 +31,4 @@ class TodoInput extends Component {
   }
 }
 
-export default connect(null, {newTodo})(TodoInput)
+export default connect(null, {addTodo})(TodoInput)
