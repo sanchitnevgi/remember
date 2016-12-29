@@ -25,29 +25,14 @@ class TodoItem extends Component {
       this.editTodo()
     }
   }
-  handleTouchStart = e => {
-    this.setState({lastX: e.touches[0].pageX, isPressed: true})
+  handleChange = e => {
+    this.setState({editText: e.target.value})
   }
-  handleMouseDown = () => {
-  }
-  handleTouchMove = e => {
-    if(this.state.isPressed)
-      e.preventDefault()
-    let deltaX = e.touches[0].pageX - this.state.lastX
-    this.setState({deltaX, opacity: (240-deltaX)/240})
+  handlePan = ({isFinal, deltaX}) => {
+    this.setState({isPressed: !isFinal, deltaX, opacity: (240-deltaX)/240})
     if(deltaX > 240) {
       this.props.markTodo(this.props.id, true)
     }
-  }
-  handleMouseMove = () => {
-  }
-  handleTouchEnd = () => {
-    this.setState({isPressed: false, lastX: null, deltaX: 0, opacity: 1})
-  }
-  handleMouseUp = () => {
-  }
-  handleChange = e => {
-    this.setState({editText: e.target.value})
   }
   render() {
     const { text, completed, bgColor } = this.props
@@ -61,8 +46,8 @@ class TodoItem extends Component {
             opacity,
             transform: `translate3d(${x}px, 0, 0)`,
             WebkitTransform: `translate3d(${x}px, 0, 0)`
-          }} onTouchStart={this.handleTouchStart} onTouchMove={this.handleTouchMove} onTouchEnd={this.handleTouchEnd}>
-            <Hammer onDoubleTap={this.handleDoubleTap}>
+          }}>
+            <Hammer onDoubleTap={this.handleDoubleTap} onPan={this.handlePan}>
               <div className={classNames({'todo-item': true, 'completed': completed})}>
                 <label>{text}</label>
               </div>
