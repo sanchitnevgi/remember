@@ -43,12 +43,13 @@ p, label, h1, h2, h3, h4, h5, h6, span, a {
   justify-content: center;
 }
 
-#clear-container {
+#completed-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  flex-grow: 1;
 }
 
-#clear-todos {
+#completed-container span {
   background: none;
   border: none;
   text-transform: uppercase;
