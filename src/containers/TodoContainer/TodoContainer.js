@@ -13,23 +13,25 @@ class TodoContainer extends Component {
     return (
       <div className='todo-container'>
         <TodoInput />
-        <TodoList>
-          {
-            todos.filter(todo => !todo.completed).map(todo =>
-              <TodoItem key={todo.id} {...todo} markTodo={markTodo} bgColor={colors.next().value} onEdit={editTodo}/>
-            )
-          }
-        </TodoList>
-        <div id='completed-container'>
-          <span>Completed</span>
+        <div className='todo-lists-container'>
+          <TodoList>
+            {
+              todos.filter(todo => !todo.completed).map(todo =>
+                <TodoItem key={todo.id} {...todo} markTodo={markTodo} bgColor={colors.next().value} onEdit={editTodo}/>
+              )
+            }
+          </TodoList>
+          <div id='completed-container'>
+            <span>Completed</span>
+          </div>
+          <TodoList>
+            {
+              todos.filter(todo => todo.completed).map(todo =>
+                <TodoItem key={todo.id} {...todo} markTodo={markTodo} bgColor={colors.next().value} onEdit={editTodo}/>
+              )
+            }
+          </TodoList>
         </div>
-        <TodoList>
-          {
-            todos.filter(todo => todo.completed).map(todo =>
-              <TodoItem key={todo.id} {...todo} markTodo={markTodo} bgColor={colors.next().value} onEdit={editTodo}/>
-            )
-          }
-        </TodoList>
       </div>
     )
   }

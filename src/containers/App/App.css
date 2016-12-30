@@ -43,6 +43,11 @@ p, label, h1, h2, h3, h4, h5, h6, span, a {
   justify-content: center;
 }
 
+.todo-lists-container {
+  max-width: 560px;
+  flex-grow: 1;
+}
+
 #completed-container {
   display: flex;
   justify-content: center;
@@ -75,7 +80,6 @@ p, label, h1, h2, h3, h4, h5, h6, span, a {
 
 .todo-list {
   width: 100%;
-  max-width: 560px;
 }
 
 .todo-item.completed {
