@@ -53,7 +53,7 @@ class TodoItem extends Component {
               </div>
             </Hammer>
             <div className='todo-edit-container'>
-              <input type='text' value={this.state.editText} onChange={this.handleChange} onBlur={this.handleBlur} onKeyDown={this.handleKeyDown}/>
+              <input type='text' value={this.state.editText} ref={input => input && input.focus()} onChange={this.handleChange} onBlur={this.handleBlur} onKeyDown={this.handleKeyDown}/>
             </div>
           </div>
         }}
