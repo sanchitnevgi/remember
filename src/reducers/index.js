@@ -1,6 +1,7 @@
-import { ADD_TODO, CLEAR_TODOS, MARK_TODO, EDIT_TODO, RECEIVE_CACHED_TODOS } from '../actions'
+import { ADD_TODO, CLEAR_TODOS, MARK_TODO, EDIT_TODO, RECEIVE_CACHED_TODOS, ADD_INIT_TODOS } from '../actions'
 import { combineReducers } from 'redux'
 import { makeTodo } from '../util/todoUtil'
+import { initTodos } from '../constants/initTodos'
 
 const todos = (state = [], action) => {
   switch (action.type) {
@@ -17,6 +18,8 @@ const todos = (state = [], action) => {
         todo.id === action.id ? { ...todo, text: action.text }
           : todo
       )
+    case ADD_INIT_TODOS:
+      return initTodos
     case RECEIVE_CACHED_TODOS:
       return [ ...action.todos ]
     case CLEAR_TODOS:

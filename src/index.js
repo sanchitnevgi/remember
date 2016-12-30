@@ -5,9 +5,12 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers'
 import createSagaMiddleware from 'redux-saga'
 import todoStorageSaga from './middleware/sagas'
-import { fetchCachedTodos } from './actions'
+import { fetchCachedTodos, addInitTodos } from './actions'
+import { isFirstRun, setAsRun } from './util/storageUtil'
 import App from './containers/App/App';
 import './index.css';
+
+console.log(isFirstRun);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware()
@@ -15,7 +18,12 @@ const sagaMiddleware = createSagaMiddleware()
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleware)))
 
 sagaMiddleware.run(todoStorageSaga)
-store.dispatch(fetchCachedTodos())
+if(isFirstRun) {
+  setAsRun()
+  store.dispatch(addInitTodos())
+} else {
+  store.dispatch(fetchCachedTodos())
+}
 
 render(
   <Provider store={store}>
