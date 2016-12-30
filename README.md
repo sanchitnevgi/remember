@@ -1,7 +1,7 @@
 ## What is this?
 _Remember_ is a progressive modern offline todo (go figure) web-app I built to learn about progressive webapps or PWA. It uses app shell architecture and IndexedDB to make the app available offline.
 
-You can find out more from [the blog post here](https://medium.com).
+You can find out more from [the blog post here](https://medium.com/@sanchitgn/what-ive-learnt-developing-a-modern-progressive-web-app-d3abe69933fa#.j4vrlqrqs).
 
 The [live demo]() is hosted on firebase. Add the app to your homescreen by selecting 'Add to Homescreen' in your browser's options.
 
