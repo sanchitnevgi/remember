@@ -3,6 +3,8 @@ import { Motion, spring } from 'react-motion'
 import Hammer from 'react-hammerjs'
 import classNames from 'classnames'
 
+const SWIPE_THERSHOLD = 240
+
 class TodoItem extends Component {
   constructor(props) {
     super(props)
@@ -29,9 +31,12 @@ class TodoItem extends Component {
     this.setState({editText: e.target.value})
   }
   handlePan = ({isFinal, deltaX}) => {
-    this.setState({isPressed: !isFinal, deltaX, opacity: (240-deltaX)/240})
-    if(deltaX > 240) {
-      this.props.markTodo(this.props.id, true)
+    const { id, completed, markTodo } = this.props
+    this.setState({isPressed: !isFinal, deltaX, opacity: (SWIPE_THERSHOLD-deltaX)/SWIPE_THERSHOLD})
+    if(!completed && deltaX > SWIPE_THERSHOLD) {
+      markTodo(id, true)
+    } else if(completed && deltaX < -SWIPE_THERSHOLD) {
+      markTodo(id, false)
     }
   }
   render() {

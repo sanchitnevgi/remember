@@ -10,8 +10,6 @@ import { isFirstRun, setAsRun } from './util/storageUtil'
 import App from './containers/App/App';
 import './index.css';
 
-console.log(isFirstRun);
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware()
 
