@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import classNames from 'classnames'
 import { markTodo, editTodo, clearTodos } from '../../actions'
 import TodoInput from '../../components/TodoInput'
 import TodoList from '../../components/TodoList'
@@ -8,7 +9,7 @@ import getColor from '../../util/colorUtil'
 
 class TodoContainer extends Component {
   render() {
-    const { todos, markTodo, editTodo, clearTodos } = this.props
+    const { todos, onlyActive, markTodo, editTodo, clearTodos } = this.props
     const colors = getColor()
     return (
       <div className='todo-container'>
@@ -21,7 +22,7 @@ class TodoContainer extends Component {
               )
             }
           </TodoList>
-          <div className='heading-container'>
+          <div className={classNames('heading-container', {'hidden' : onlyActive})}>
             <span>Completed</span>
           </div>
           <TodoList>
@@ -31,7 +32,7 @@ class TodoContainer extends Component {
               )
             }
           </TodoList>
-          <div className='heading-container'>
+          <div className={classNames('heading-container', {'hidden' : onlyActive})}>
             <button onClick={clearTodos}>Clear completed</button>
           </div>
         </div>
@@ -40,6 +41,6 @@ class TodoContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ todos }) => ({ todos })
+const mapStateToProps = ({ todos }) => ({ todos, onlyActive: !todos.some(todo => todo.completed) })
 
 export default connect(mapStateToProps, { markTodo, editTodo, clearTodos })(TodoContainer)
