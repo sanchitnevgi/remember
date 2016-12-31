@@ -31,6 +31,8 @@ Tools I've used to bring this to life.
 
 ## Available Scripts
 
+First install all the dependencies by running `yarn`
+
 In the project directory, you can run:
 
 ### `yarn start`
