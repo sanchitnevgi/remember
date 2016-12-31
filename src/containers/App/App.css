@@ -48,13 +48,13 @@ p, label, h1, h2, h3, h4, h5, h6, span, a {
   flex-grow: 1;
 }
 
-#completed-container {
+.heading-container {
   display: flex;
   justify-content: center;
   flex-grow: 1;
 }
 
-#completed-container span {
+.heading-container span, .heading-container button {
   background: none;
   border: none;
   text-transform: uppercase;

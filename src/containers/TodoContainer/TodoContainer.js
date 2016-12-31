@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { markTodo, editTodo } from '../../actions'
+import { markTodo, editTodo, clearTodos } from '../../actions'
 import TodoInput from '../../components/TodoInput'
 import TodoList from '../../components/TodoList'
 import TodoItem from '../../components/TodoItem'
@@ -8,7 +8,7 @@ import getColor from '../../util/colorUtil'
 
 class TodoContainer extends Component {
   render() {
-    const { todos, markTodo, editTodo } = this.props
+    const { todos, markTodo, editTodo, clearTodos } = this.props
     const colors = getColor()
     return (
       <div className='todo-container'>
@@ -21,7 +21,7 @@ class TodoContainer extends Component {
               )
             }
           </TodoList>
-          <div id='completed-container'>
+          <div className='heading-container'>
             <span>Completed</span>
           </div>
           <TodoList>
@@ -31,6 +31,9 @@ class TodoContainer extends Component {
               )
             }
           </TodoList>
+          <div className='heading-container'>
+            <button onClick={clearTodos}>Clear completed</button>
+          </div>
         </div>
       </div>
     )
@@ -39,4 +42,4 @@ class TodoContainer extends Component {
 
 const mapStateToProps = ({ todos }) => ({ todos })
 
-export default connect(mapStateToProps, { markTodo, editTodo })(TodoContainer)
+export default connect(mapStateToProps, { markTodo, editTodo, clearTodos })(TodoContainer)
